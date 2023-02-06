@@ -161,7 +161,7 @@ let findSubscribe = () => {
     if(xhr.readyState==4 && xhr.status==401) {
       let failResponse = JSON.parse(xhr.responseText);
       if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
-          refreshToken(findSubscribe()); 
+          refreshToken(findSubscribe); 
       }  
     }
   };

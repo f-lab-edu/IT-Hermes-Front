@@ -11,7 +11,7 @@ let isAccountLogout = () => {
         if(xhr.readyState==4 && xhr.status==401) {
             let failResponse = JSON.parse(xhr.responseText);
             if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
-                refreshToken(isAccountLogout()); 
+                refreshToken(isAccountLogout); 
             }  
         }
     }
@@ -104,8 +104,9 @@ let isAccountMypage = () => {
         }
         if(xhr.readyState==4 && xhr.status==401) {
             let failResponse = JSON.parse(xhr.responseText);
+            console.log(failResponse);
             if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
-                refreshToken(isAccountMypage()); 
+                refreshToken(isAccountMypage); 
             }  
         }
     }
@@ -137,7 +138,7 @@ let changeNickname = (originalNickname) => {
         if(xhr.readyState==4 && xhr.status==401) {
             let failResponse = JSON.parse(xhr.responseText);
             if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
-                refreshToken(changeNickname()); 
+                refreshToken(changeNickname); 
             }  
         }
     }

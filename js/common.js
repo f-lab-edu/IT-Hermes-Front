@@ -99,6 +99,11 @@ let setCookie = (accessToken, refreshToken) => {
     data.setTime(data.getTime() + 72*60*60*1000);
     document.cookie = refreshAuthentification+'='+refreshToken+';'+refreshAuthentification+'=; expires='+data.toUTCString()+'; path=/';
 }
+let setAccessCookie = (accessToken) => {
+    let data = new Date();
+    data.setTime(data.getTime() + 60*60*1000);
+    document.cookie = accessAuthentification+'='+accessToken+';' +accessAuthentification+'=; expires='+data.toUTCString()+'; path=/';
+}
 
 let getCookie = (name) => {
     let value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
@@ -145,7 +150,7 @@ let refreshToken = (afterEvent) => {
     xhr2.onreadystatechange=() => {
         if(xhr2.readyState == 4 && xhr2.status==200) {
             let data = JSON.parse(xhr2.responseText);
-            setCookie('Bearer '+data.accessToken,'Bearer '+data.accessToken);
+            setAccessCookie("Bearer "+data.accessToken);
             afterEvent();
         }
         if(xhr2.readyState == 4 && xhr2.status==401) {
@@ -156,5 +161,5 @@ let refreshToken = (afterEvent) => {
     xhr2.open("GET", defaultServerUrl+`/user/refresh-token`, true);
     xhr2.setRequestHeader("Content-Type", "application/json")
     xhr2.setRequestHeader(refreshAuthentification,getCookie(refreshAuthentification));
-    xhr2.send(requestData);   
+    xhr2.send();   
 }

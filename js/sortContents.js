@@ -70,7 +70,7 @@ let sortContents = () => {
         if(xhr.readyState==4 && xhr.status==401) {
             let failResponse = JSON.parse(xhr.responseText);
             if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
-                refreshToken(sortContents()); 
+                refreshToken(sortContents); 
             }  
         }
     }
@@ -153,7 +153,7 @@ let submit = (m1, m2, m3) => {
         if(xhr.readyState==4 && xhr.status==401) {
             let failResponse = JSON.parse(xhr.responseText);
             if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
-                refreshToken(submit()); 
+                refreshToken(submit); 
             }  
         }
     }
