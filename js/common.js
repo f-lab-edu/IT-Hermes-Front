@@ -128,7 +128,7 @@ let addViewCount = (redirectUrl,contentsType) => {
     xhr.onreadystatechange = () => {
         console.log(xhr.status);
         if(xhr.readyState == 4 && xhr.status==200){
-            window.location.href=redirectUrl;
+            window.open(redirectUrl);
         }
     };
 
