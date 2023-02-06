@@ -145,7 +145,7 @@ let refreshToken = (afterEvent) => {
     xhr2.onreadystatechange=() => {
         if(xhr2.readyState == 4 && xhr2.status==200) {
             let data = JSON.parse(xhr2.responseText);
-            setCookie('Bearer '+data.accessToken,'Bearer '+data.refreshToken);
+            setCookie('Bearer '+data.accessToken,'Bearer '+data.accessToken);
             afterEvent();
         }
         if(xhr2.readyState == 4 && xhr2.status==401) {

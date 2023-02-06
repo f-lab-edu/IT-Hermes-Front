@@ -67,6 +67,12 @@ let sortContents = () => {
             `
             buttonPagenation('YOUTUBE',0);
         }
+        if(xhr.readyState==4 && xhr.status==401) {
+            let failResponse = JSON.parse(xhr.responseText);
+            if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
+                refreshToken(sortContents()); 
+            }  
+        }
     }
     xhr.open("GET", defaultServerUrl + `/contents/category?type=YOUTUBE&page=0&order=POPULAR`, true);
     xhr.setRequestHeader("Content-Type", "application/json")
@@ -143,6 +149,12 @@ let submit = (m1, m2, m3) => {
             </div>
             `     
             buttonPagenation(m1,m3);
+        }
+        if(xhr.readyState==4 && xhr.status==401) {
+            let failResponse = JSON.parse(xhr.responseText);
+            if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
+                refreshToken(submit()); 
+            }  
         }
     }
     console.log(m1);
