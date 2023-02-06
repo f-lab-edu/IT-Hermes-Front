@@ -159,7 +159,7 @@ let signupSubmit = () => {
   let userJoinDto = JSON.stringify(signupDto);
 
   xhr.onreadystatechange = () => {
-    if (xhr.readyState == 4 && xhr.status == 200) {
+    if (xhr.readyState == 4 && xhr.status == 201) {
       let data = JSON.parse(xhr.responseText);
       console.log(data);
       moveLoginPage();
