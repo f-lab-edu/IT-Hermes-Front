@@ -154,8 +154,15 @@ let findSubscribe = () => {
           data[6].isActive
         );
       }
-    } else if (xhr.readyState == 4 && xhr.status == 400) {
+    } 
+    if (xhr.readyState == 4 && xhr.status == 400) {
       alert("아이디 혹은 구독정보 불일치");
+    }
+    if(xhr.readyState==4 && xhr.status==401) {
+      let failResponse = JSON.parse(xhr.responseText);
+      if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
+          refreshToken(findSubscribe()); 
+      }  
     }
   };
   xhr.open("POST", defaultServerUrl + `/subscribe/`, true);

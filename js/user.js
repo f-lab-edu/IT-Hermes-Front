@@ -8,6 +8,12 @@ let isAccountLogout = () => {
             document.querySelector('#subscribe-info').style.display='none';
             isActiveMain();
         }
+        if(xhr.readyState==4 && xhr.status==401) {
+            let failResponse = JSON.parse(xhr.responseText);
+            if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
+                refreshToken(isAccountLogout()); 
+            }  
+        }
     }
     xhr.open("GET", defaultServerUrl+`/user/logout`, true);
     xhr.setRequestHeader(accessAuthentification,getCookie(accessAuthentification));
@@ -127,6 +133,12 @@ let changeNickname = (originalNickname) => {
             alert("닉네임 변경 완료")
             let response = JSON.parse(xhr.responseText);
             console.log(response);
+        }
+        if(xhr.readyState==4 && xhr.status==401) {
+            let failResponse = JSON.parse(xhr.responseText);
+            if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
+                refreshToken(changeNickname()); 
+            }  
         }
     }
 
