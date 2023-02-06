@@ -103,8 +103,15 @@ let subscribeSubmit = () => {
     if (xhr.readyState == 4 && xhr.status == 200) {
       findSubscribe();
       alert("수정이 완료되었습니다.");
-    } else if (xhr.readyState == 4 && xhr.status == 400) {
+    }
+    if (xhr.readyState == 4 && xhr.status == 400) {
       alert("아이디 혹은 패스워드 불일치");
+    }
+    if(xhr.readyState==4 && xhr.status==401) {
+      let failResponse = JSON.parse(xhr.responseText);
+      if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
+          refreshToken(subscribeSubmit); 
+      }  
     }
   };
   xhr.open("PUT", defaultServerUrl + `/subscribe/`, true);
