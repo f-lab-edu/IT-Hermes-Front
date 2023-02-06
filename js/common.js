@@ -154,7 +154,15 @@ let refreshToken = (afterEvent) => {
             afterEvent();
         }
         if(xhr2.readyState == 4 && xhr2.status==401) {
+            localStorage.removeItem('loginId');
+            deleteCookie(accessAuthentification);
+            deleteCookie(refreshAuthentification);
             alert("세션이 만료되었습니다");
+            let account = document.querySelector('#account-info');
+            account.innerHTML=`
+            <li class="nav-item"><a class="nav-link" onclick="moveLoginPage()">로그인</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="isAccountSignUp()">회원가입</a></li>
+            `
             moveLoginPage();
         }
     }
