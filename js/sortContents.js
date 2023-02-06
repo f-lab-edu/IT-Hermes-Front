@@ -101,7 +101,7 @@ let submit = (m1, m2, m3) => {
             if(m1!='JOB') {
                 for (let i = 0; i < data.length; i++) {
                     pageDataList+=`
-                        <div class="col mb-5">
+                        <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
                                 <img class="mainContents-image" src="${data[i].image}" alt="..." />
                                 <div class="card-body p-4">
@@ -120,7 +120,7 @@ let submit = (m1, m2, m3) => {
             } else {
                 for (let i = 0; i < data.length; i++) {
                     pageDataList+=`
-                        <div class="col mb-5">
+                        <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
                                 <img class="mainContents-image" src="/image/saramin_default.png" alt="..." />
                                 <div class="card-body p-4">
