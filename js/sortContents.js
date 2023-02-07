@@ -191,6 +191,7 @@ let getCategoryEntireCnt = () => {
         }
     }
     xhr.open("GET", defaultServerUrl + `/contents/count`, true);
+    xhr.setRequestHeader("Content-Type","application/json");
     xhr.send();
 }
 

@@ -67,6 +67,7 @@ let isActiveMain = () => {
     }
         xhr.open("GET", defaultServerUrl+`/contents/main?type=YOUTUBE_AND_NEWS`, true);
         xhr.setRequestHeader(accessAuthentification,getCookie(accessAuthentification));
+        xhr.setRequestHeader("Content-Type","application/json");
         xhr.send();
     } else {
         let account = document.querySelector('#account-info');
