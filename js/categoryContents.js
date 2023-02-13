@@ -102,28 +102,48 @@ let categoryJob = () => {
             let jobDataList = '';
 
             for (let i = 0; i < 10; i++) {
-                jobDataList += 
-                `<div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
-                <div class="card h-100">
-                    <img class="job-image" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <h5 class="job-title">${data[i].title}</h5>
-                            <p class="job-service">${data[i].contentsProviderType}</p>
-                            <p class="job-category">${data[i].category}</p>
-                            <p class="job-date">${data[i].contentsDate}</p>
-                            <p class="job-reviewCnt">조회수 : ${data[i].viewCnt}</p>
+                if(data[i].contentsProviderType=='SARAMIN') {
+                    jobDataList+=`
+                    <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
+                        <div class="card h-100">
+                            <img class="mainContents-image" src="/image/saramin_default.png" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="mainContents-title">${data[i].title}</h5>
+                                    <p class="mainContents-service">${data[i].contentsProviderType}</p>
+                                    <p class="mainContents-category">${data[i].category}</p>
+                                    <p class="mainContents-date">${data[i].contentsDate}</p>
+                                    <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>`;
+                    </div>                
+                    `
+                } else if(data[i].contentsProviderType=='WANTED') {
+                    jobDataList+=`
+                    <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
+                        <div class="card h-100">
+                            <img class="mainContents-image" src="/image/wanted_default.png" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="mainContents-title">${data[i].title}</h5>
+                                    <p class="mainContents-service">${data[i].contentsProviderType}</p>
+                                    <p class="mainContents-category">${data[i].category}</p>
+                                    <p class="mainContents-date">${data[i].contentsDate}</p>
+                                    <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                    `
+                }
             }
 
             let info = document.querySelector('#section-info3');
             info.innerHTML = `
     <div class="container px-4 px-lg-5 mt-5">
         <h5 class="fw-bolder">채용</h5>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"><${jobDataList}/div>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${jobDataList}</div>
     </div>`;
         }
     }

@@ -117,9 +117,10 @@ let submit = (m1, m2, m3) => {
                         </div>                
                     `
                 }
-            } else {
+            } else {             
                 for (let i = 0; i < data.length; i++) {
-                    pageDataList+=`
+                    if(data[i].contentProvider=='SARAMIN') {
+                        pageDataList+=`
                         <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
                                 <img class="mainContents-image" src="/image/saramin_default.png" alt="..." />
@@ -134,7 +135,25 @@ let submit = (m1, m2, m3) => {
                                 </div>
                             </div>
                         </div>                
-                    `
+                        `
+                    } else if(data[i].contentProvider=='WANTED') {
+                        pageDataList+=`
+                        <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
+                            <div class="card h-100">
+                                <img class="mainContents-image" src="/image/wanted_default.png" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <h5 class="mainContents-title">${data[i].title}</h5>
+                                        <p class="mainContents-service">${data[i].contentProvider}</p>
+                                        <p class="mainContents-category">${data[i].category}</p>
+                                        <p class="mainContents-date">${data[i].contentsDate}</p>
+                                        <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                        `
+                    }
                 }                
             }
 
@@ -188,6 +207,10 @@ let getCategoryEntireCnt = () => {
             if(newsCnt%8>0) {
                 newsLastLine+=1;
             }
+            
+            youtubeLastLine = parseInt(youtubeLastLine);
+            jobLastLine = parseInt(jobLastLine);
+            newsLastLine = parseInt(newsLastLine);
         }
     }
     xhr.open("GET", defaultServerUrl + `/contents/count`, true);
@@ -247,7 +270,7 @@ let buttonPagenation = (category, pageIndex) => {
     if(pageIndex==0) {
         if(lastLine<=8) {
             pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`
-            for(let i=1;i<lastLine;i++) {
+            for(let i=1;i<=lastLine;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
                     <li class="page-item active">
@@ -297,7 +320,7 @@ let buttonPagenation = (category, pageIndex) => {
         //(이슈) 예를들어 32개까지 있으면 8개가 나오지 않고 4개가 나와야되는데.. 8개나옴..
         if(lastLine<=8) {
             pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`
-            for(let i=1;i<lastLine;i++) {
+            for(let i=1;i<=lastLine;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
                     <li class="page-item active">
