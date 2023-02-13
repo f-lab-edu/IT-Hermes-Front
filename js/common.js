@@ -1,7 +1,7 @@
 const localStorage = window.localStorage;
 const accessAuthentification = 'HERMES-ACCESS-TOKEN';
 const refreshAuthentification = 'HERMES-REFRESH-TOKEN';
-const defaultServerUrl = `https://it-hermes.store/api`;
+let defaultServerUrl;
 let categoryFlag = false;
 let categoryData = "YOUTUBE";
 let sortData = "RECENT";
@@ -20,6 +20,14 @@ let viewCntUrl = "";
 let viewCntContentsType = "";
 
 let isActiveMain = () => {
+    if(location.hostname=='127.0.0.1') {
+        defaultServerUrl=`http://127.0.0.1:8080/api`;
+    } else if(location.hostname=='it-hermes.store') {
+        defaultServerUrl=`https://it-hermes.store/api`;
+    } else if(location.hostname=='it-hermes.site') {
+        defaultServerUrl=`https://it-hermes.site/api`;
+    }
+    console.log(defaultServerUrl);
     let xhr = new XMLHttpRequest();
     if(getCookie(accessAuthentification)==null) {
         
