@@ -5,3 +5,12 @@
     vertical-align: middle;
     cursor: grab;
 }
+
+#footerDepth{
+    height: 200px;
+}
+
+#footerText{
+    position: absolute;
+    left: 35px;
+}
