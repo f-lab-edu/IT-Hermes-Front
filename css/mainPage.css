@@ -1,0 +1,6 @@
+#mainImage{
+    height: 280px;
+    width: 270px;
+    object-fit: cover;
+    vertical-align: middle;
+}

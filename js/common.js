@@ -51,7 +51,7 @@ let isActiveMain = () => {
                 top10DataList+=`
                 <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
                     <div class="card h-100">
-                        <img class="mainContents-image" src="${data[i].image}" alt="..." />
+                        <img class="mainContents-image" id="mainImage" src="${data[i].image}" alt="..." />
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <h5 class="mainContents-title">${data[i].title}</h5>
@@ -68,7 +68,7 @@ let isActiveMain = () => {
 
             top10Section.innerHTML=`
                 <div class="container px-4 px-lg-5 mt-5">
-                    <h5 class="fw-bolder">TOP-10</h5>
+                    <h5 class="fw-bolder">TOP-12</h5>
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${top10DataList}</div>
                 </div>`;
         }
