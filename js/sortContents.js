@@ -20,9 +20,9 @@ let sortContents = () => {
                 --키워드선택--
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li onClick="dropDownListValue2('RECENT')"><a class="dropdown-item">최신순</a></li>
-                    <li onClick="dropDownListValue2('POPULAR')"><a class="dropdown-item">인기순</a></li>
-                    <li onClick="dropDownListValue2('ID')"><a class="dropdown-item">서비스 추천순</a></li>
+                    <li onClick="dropDownListValue2('최신순')"><a class="dropdown-item">최신순</a></li>
+                    <li onClick="dropDownListValue2('인기순')"><a class="dropdown-item">인기순</a></li>
+                    <li onClick="dropDownListValue2('서비스 추천순')"><a class="dropdown-item">서비스 추천순</a></li>
                 </ul>
             </div>
                 `;
@@ -194,16 +194,16 @@ let getCategoryEntireCnt = () => {
             jobCnt = data.jobCnt;
             newsCnt = data.newsCnt;
 
-            youtubeLastLine= youtubeCnt/12;
-            if(youtubeCnt%12>0) {
+            youtubeLastLine= youtubeCnt/8;
+            if(youtubeCnt%8>0) {
                 youtubeLastLine+=1;
             }
-            jobLastLine= jobCnt/12;
-            if(jobCnt%12>0) {
+            jobLastLine= jobCnt/8;
+            if(jobCnt%8>0) {
                 jobLastLine+=1;
             }
-            newsLastLine= newsCnt/12;
-            if(newsCnt%12>0) {
+            newsLastLine= newsCnt/8;
+            if(newsCnt%8>0) {
                 newsLastLine+=1;
             }
             
@@ -233,9 +233,17 @@ let dropDownListValue = (e) => {
 let dropDownListValue2 = (e) => {
     pageData=0;
     let keyword = document.querySelector('#category2-list');
+    let tmp;
+    if(e=='최신순'){
+        tmp='RECENT';
+    }else if(e=='인기순'){
+        tmp='POPULAR';
+    }else{
+        tmp='ID';
+    }
     keyword.innerHTML=e;
     sortData=e;
-    submit(categoryData,e,pageData);
+    submit(categoryData,tmp,pageData);
 }
 
 let sort_click = (e) => {
