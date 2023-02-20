@@ -3,9 +3,9 @@ let sortContents = () => {
     xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let data = JSON.parse(xhr.responseText);
-            let info = document.querySelector('.bg-dark.py-5');
+            let info = document.querySelector('#category-info');
             info.innerHTML = `
-            <div class="dropdown">
+            <div class="dropdown" id="category-select1">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="category-list" data-bs-toggle="dropdown" aria-expanded="false">
                 --키워드선택--
                 </button>
@@ -15,7 +15,7 @@ let sortContents = () => {
                     <li onClick="dropDownListValue('JOB')"><a class="dropdown-item">채용</a></li>
                 </ul>
             </div>
-            <div class="dropdown">
+            <div class="dropdown" id="category-select2">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="category2-list" data-bs-toggle="dropdown" aria-expanded="false">
                 --키워드선택--
                 </button>

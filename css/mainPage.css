@@ -14,3 +14,12 @@
     position: absolute;
     left: 35px;
 }
+
+#category-select1{
+    margin-left: 100px;
+}
+
+#category-select2{
+    padding-top: 20px;
+    margin-left: 200px;
+}
