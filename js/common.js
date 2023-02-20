@@ -57,7 +57,7 @@ let isActiveMain = () => {
                                 <h5 class="mainContents-title">${data[i].title}</h5>
                                 <p class="mainContents-service">${data[i].contentsProviderType}</p>
                                 <p class="mainContents-category">${data[i].category}</p>
-                                <p class="mainContents-date">${data[i].contentsDate}</p>
+                                <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
                                 <p class="mainContents-cnt">조회수 : ${data[i].viewCnt}</p>
                             </div>
                         </div>
@@ -179,4 +179,31 @@ let refreshToken = (afterEvent) => {
     xhr2.setRequestHeader("Content-Type", "application/json")
     xhr2.setRequestHeader(refreshAuthentification,getCookie(refreshAuthentification));
     xhr2.send();   
+}
+
+let convertDate = (originalDate) => {
+    let modifiedDate;
+    modifiedDate = originalDate.substring(0,11);
+
+    let tmpDate = originalDate.substring(0,11);
+    let tmpYear = tmpDate.substring(0,4);
+    let tmpMonth = tmpDate.substring(5,7);
+    let tmpDay = tmpDate.substring(8,10);
+
+    let currentDate = new Date();
+    let currentYear = currentDate.getFullYear();
+    let currentMonth = ('0'+(currentDate.getMonth()+1)).slice(-2);
+    let currentDay = ('0'+currentDate.getDate()).slice(-2);
+    
+    if(tmpYear == currentYear){
+        if(tmpMonth == currentMonth){
+            if(currentDay-tmpDay<=7){
+                if(currentDay-tmpDay==0){
+                    return "today";
+                }
+                return currentDay-tmpDay+"일전";
+            }
+        }
+    }
+    return modifiedDate;
 }

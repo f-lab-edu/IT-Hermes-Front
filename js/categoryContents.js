@@ -26,7 +26,7 @@ let categoryYoutube = () => {
                                     <h5 class="youtube-title">${data[i].title}</h5>
                                     <p class="youtube-service">${data[i].contentsProviderType}</p>
                                     <p class="youtube-category">${data[i].category}</p>
-                                    <p class="youtube-date">${data[i].contentsDate}</p>
+                                    <p class="youtube-date">${convertDate(data[i].contentsDate)}</p>
                                     <p class="reviewCnt">조회수 : ${data[i].viewCnt}</p>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@ let categoryNews = () => {
                             <h5 class="news-title">${data[i].title}</h5>
                             <p class="news-service">${data[i].contentsProviderType}</p>
                             <p class="news-category">${data[i].category}</p>
-                            <p class="news-date">${data[i].contentsDate}</p>
+                            <p class="news-date">${convertDate(data[i].contentsDate)}</p>
                             <p class="news-reviewCnt">조회수 : ${data[i].viewCnt}</p>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ let categoryJob = () => {
                                     <h5 class="mainContents-title">${data[i].title}</h5>
                                     <p class="mainContents-service">${data[i].contentsProviderType}</p>
                                     <p class="mainContents-category">${data[i].category}</p>
-                                    <p class="mainContents-date">${data[i].contentsDate}</p>
+                                    <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
                                     <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ let categoryJob = () => {
                                     <h5 class="mainContents-title">${data[i].title}</h5>
                                     <p class="mainContents-service">${data[i].contentsProviderType}</p>
                                     <p class="mainContents-category">${data[i].category}</p>
-                                    <p class="mainContents-date">${data[i].contentsDate}</p>
+                                    <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
                                     <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
                                 </div>
                             </div>

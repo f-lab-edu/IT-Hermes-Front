@@ -46,7 +46,7 @@ let sortContents = () => {
                                     <h5 class="mainContents-title">${data[i].title}</h5>
                                     <p class="mainContents-service">${data[i].contentProvider}</p>
                                     <p class="mainContents-category">${data[i].category}</p>
-                                    <p class="mainContents-date">${data[i].contentsDate}</p>
+                                    <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
                                     <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@ let submit = (m1, m2, m3) => {
                                         <h5 class="mainContents-title">${data[i].title}</h5>
                                         <p class="mainContents-service">${data[i].contentProvider}</p>
                                         <p class="mainContents-category">${data[i].category}</p>
-                                        <p class="mainContents-date">${data[i].contentsDate}</p>
+                                        <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
                                         <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ let submit = (m1, m2, m3) => {
                                         <h5 class="mainContents-title">${data[i].title}</h5>
                                         <p class="mainContents-service">${data[i].contentProvider}</p>
                                         <p class="mainContents-category">${data[i].category}</p>
-                                        <p class="mainContents-date">${data[i].contentsDate}</p>
+                                        <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
                                         <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@ let submit = (m1, m2, m3) => {
                                         <h5 class="mainContents-title">${data[i].title}</h5>
                                         <p class="mainContents-service">${data[i].contentProvider}</p>
                                         <p class="mainContents-category">${data[i].category}</p>
-                                        <p class="mainContents-date">${data[i].contentsDate}</p>
+                                        <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
                                         <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
                                     </div>
                                 </div>
