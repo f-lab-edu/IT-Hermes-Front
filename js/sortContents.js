@@ -40,7 +40,7 @@ let sortContents = () => {
                 pageDataList+=`
                     <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                         <div class="card h-100">
-                            <img class="mainContents-image" src="${data[i].image}" alt="..." />
+                            <img class="mainContents-image" id="mainImage" src="${data[i].image}" alt="..." />
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="mainContents-title">${data[i].title}</h5>
@@ -102,7 +102,7 @@ let submit = (m1, m2, m3) => {
                     pageDataList+=`
                         <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
-                                <img class="mainContents-image" src="${data[i].image}" alt="..." />
+                                <img class="mainContents-image" id="mainImage" src="${data[i].image}" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <h5 class="mainContents-title">${data[i].title}</h5>
@@ -122,7 +122,7 @@ let submit = (m1, m2, m3) => {
                         pageDataList+=`
                         <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
-                                <img class="mainContents-image" src="/image/saramin_default.png" alt="..." />
+                                <img class="mainContents-image" id="mainImage" src="/image/saramin_default.png" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <h5 class="mainContents-title">${data[i].title}</h5>
@@ -139,7 +139,7 @@ let submit = (m1, m2, m3) => {
                         pageDataList+=`
                         <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
-                                <img class="mainContents-image" src="/image/wanted_default.png" alt="..." />
+                                <img class="mainContents-image" id="mainImage" src="/image/wanted_default.png" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <h5 class="mainContents-title">${data[i].title}</h5>

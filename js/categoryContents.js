@@ -20,7 +20,7 @@ let categoryYoutube = () => {
                 dataList +=
                     `<div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
                         <div class="card h-100">
-                            <img class="youtube-image" src="${data[i].image}" alt="..." />
+                            <img class="youtube-image" id="mainImage" src="${data[i].image}" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                     <h5 class="youtube-title">${data[i].title}</h5>
@@ -65,7 +65,7 @@ let categoryNews = () => {
                 newsDataList += `
                 <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
                 <div class="card h-100">
-                    <img class="news-image" src="${data[i].image}" alt="..." />
+                    <img class="news-image" id="mainImage" src="${data[i].image}" alt="..." />
                     <div class="card-body p-4">
                         <div class="text-center">
                             <h5 class="news-title">${data[i].title}</h5>
@@ -106,7 +106,7 @@ let categoryJob = () => {
                     jobDataList+=`
                     <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
                         <div class="card h-100">
-                            <img class="mainContents-image" src="/image/saramin_default.png" alt="..." />
+                            <img class="mainContents-image" id="mainImage" src="/image/saramin_default.png" alt="..." />
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="mainContents-title">${data[i].title}</h5>
@@ -123,7 +123,7 @@ let categoryJob = () => {
                     jobDataList+=`
                     <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
                         <div class="card h-100">
-                            <img class="mainContents-image" src="/image/wanted_default.png" alt="..." />
+                            <img class="mainContents-image" id="mainImage" src="/image/wanted_default.png" alt="..." />
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="mainContents-title">${data[i].title}</h5>
