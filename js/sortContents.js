@@ -3,7 +3,6 @@ let sortContents = () => {
     xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let data = JSON.parse(xhr.responseText);
-            console.log(data);
             let info = document.querySelector('.bg-dark.py-5');
             info.innerHTML = `
             <div class="dropdown">

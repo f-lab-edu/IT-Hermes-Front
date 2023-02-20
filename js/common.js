@@ -47,7 +47,7 @@ let isActiveMain = () => {
             let top10Section = document.querySelector('#section-info');
             let top10DataList = '';
 
-            for(let i=0; i<10; i++){
+            for(let i=0; i<12; i++){
                 top10DataList+=`
                 <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
                     <div class="card h-100">
