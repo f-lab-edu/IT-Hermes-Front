@@ -36,8 +36,8 @@ let isActiveMain = () => {
         if(xhr.readyState == 4 && xhr.status==200) {
             let account = document.querySelector('#account-info');
             account.innerHTML=`
-            <li class="nav-item"><a class="nav-link" onclick="moveLoginPage()">로그인</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="isAccountSignUp()">회원가입</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="moveLoginPage()" style="cursor: grab;">로그인</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="isAccountSignUp()" style="cursor: grab;">회원가입</a></li>
             `
 
             document.querySelector('#section-info2').innerHTML='';
@@ -80,10 +80,10 @@ let isActiveMain = () => {
     } else {
         let account = document.querySelector('#account-info');
         account.innerHTML=`
-        <li class="nav-item" id="user-id-info"><a class="nav-link active" aria-current="page" href="/">${localStorage.getItem('loginId')}님</a></li>
-        <li class="nav-item"><a class="nav-link" onClick="isAccountMypage()">마이페이지</a></li>
-        <li class="nav-item"><a class="nav-link" onClick="isAccountLogout()">로그아웃</a></li>
-        <li class="nav-item"><a class="nav-link" onClick="isChangeSubscribe()">구독</a></li>
+        <li class="nav-item" id="user-id-info"><a class="nav-link active" aria-current="page" href="/" style="cursor: grab;">${localStorage.getItem('loginId')}님</a></li>
+        <li class="nav-item"><a class="nav-link" onClick="isAccountMypage()" style="cursor: grab;">마이페이지</a></li>
+        <li class="nav-item"><a class="nav-link" onClick="isAccountLogout()" style="cursor: grab;">로그아웃</a></li>
+        <li class="nav-item"><a class="nav-link" onClick="isChangeSubscribe()" style="cursor: grab;">구독</a></li>
         `
 
         categoryYoutube();

@@ -1,116 +1,106 @@
 let isAccountSignUp = () => {
   let info = document.querySelector("#section-info");
   info.innerHTML = `
-        <button id="duplicate-id" onClick="checkDuplicateLoginId()" style="margin-left: 800px;top: 100px;position: relative;">아이디 중복확인</button><br>
-        <button id="nickname-id" onClick="checkDuplicateNickname()" style="margin-left: 800px;top: 350px;position: relative;">닉네임 중복확인</button>
+        <div id="signup-info">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example1">아이디</label><br>
+              <input type="email" id="form-signup-id" placeholder="영문자 4~ 16자" class="form-control" />
+              <button id="duplicate-id" onClick="checkDuplicateLoginId()" type="button" class="btn btn-secondary btn-block mb-4">아이디 중복확인</button>
+          </div>
+      
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example2">패스워드</label>
+              <input type="password" id="form-signup-password" placeholder="영문자, 숫자, 특수문자 포함 8 ~ 20자" class="form-control" />        
+          </div>
 
-        <div style="width:300px;text-align:center;margin-left: 500px;">
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example1">아이디</label>
-                    <input type="email" id="form-signup-id" class="form-control" />
-                </div>
-            
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">패스워드</label>
-                    <input type="password" id="form-signup-password" class="form-control" />        
-                </div>
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example2">패스워드확인</label>
+              <input type="password" id="form-signup-password-confirm" placeholder="영문자, 숫자, 특수문자 포함 8 ~20자" class="form-control" />
+          </div>
 
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">패스워드확인</label>
-                    <input type="password" id="form-signup-password-confirm" class="form-control" />
-                </div>
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example2">닉네임</label><br>
+              <input type="text" maxlength='9' id="form-signup-nickname" placeholder="한영문자 포함 2 ~ 10자" class="form-control" />
+              <button id="nickname-id" onClick="checkDuplicateNickname()" type="button" class="btn btn-secondary btn-block mb-4">닉네임 중복확인</button>
+          </div>
 
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">닉네임</label>
-                    <input type="text" maxlength='9' id="form-signup-nickname" class="form-control" />
-                </div>
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example2">직무</label>
+                  <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="job-button-list" data-bs-toggle="dropdown" aria-expanded="false">
+                      ---------------------직무 선택--------------------
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li onClick="dropDownJobListValue('FRONT')"><a class="dropdown-item">FRONT</a></li>
+                          <li onClick="dropDownJobListValue('BACKEND')"><a class="dropdown-item">BACKEND</a></li>
+                          <li onClick="dropDownJobListValue('MOBILE')"><a class="dropdown-item">MOBILE</a></li>
+                      </ul>
+                  </div>
+          </div>
 
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">직무</label>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="job-button-list" data-bs-toggle="dropdown" aria-expanded="false">
-                            --직무선택--
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li onClick="dropDownJobListValue('FRONT')"><a class="dropdown-item">FRONT</a></li>
-                                <li onClick="dropDownJobListValue('BACKEND')"><a class="dropdown-item">BACKEND</a></li>
-                                <li onClick="dropDownJobListValue('MOBILE')"><a class="dropdown-item">MOBILE</a></li>
-                            </ul>
-                        </div>
-                </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">연차</label>
+            <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="experience-button-list" data-bs-toggle="dropdown" aria-expanded="false">
+            ---------------------연차 선택--------------------
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li onClick="dropDownExperienceListValue('0')"><a class="dropdown-item">신입</a></li>
+                <li onClick="dropDownExperienceListValue('1')"><a class="dropdown-item">1년차</a></li>
+                <li onClick="dropDownExperienceListValue('2')"><a class="dropdown-item">2년차</a></li>
+                <li onClick="dropDownExperienceListValue('3')"><a class="dropdown-item">3년차</a></li>
+                <li onClick="dropDownExperienceListValue('4')"><a class="dropdown-item">4년차</a></li>
+                <li onClick="dropDownExperienceListValue('5')"><a class="dropdown-item">5년차</a></li>
+                <li onClick="dropDownExperienceListValue('6')"><a class="dropdown-item">6년차</a></li>
+                <li onClick="dropDownExperienceListValue('7')"><a class="dropdown-item">7년차</a></li>
+                <li onClick="dropDownExperienceListValue('8')"><a class="dropdown-item">8년차</a></li>
+                <li onClick="dropDownExperienceListValue('9')"><a class="dropdown-item">9년차</a></li>
+                <li onClick="dropDownExperienceListValue('10')"><a class="dropdown-item">10년차</a></li>
+                <li onClick="dropDownExperienceListValue('11')"><a class="dropdown-item">11년차</a></li>
+                <li onClick="dropDownExperienceListValue('12')"><a class="dropdown-item">12년차</a></li>
+                <li onClick="dropDownExperienceListValue('13')"><a class="dropdown-item">13년차</a></li>
+                <li onClick="dropDownExperienceListValue('14')"><a class="dropdown-item">14년차</a></li>
+                <li onClick="dropDownExperienceListValue('15')"><a class="dropdown-item">15년차</a></li>
+                <li onClick="dropDownExperienceListValue('16')"><a class="dropdown-item">16년차</a></li>
+                <li onClick="dropDownExperienceListValue('17')"><a class="dropdown-item">17년차</a></li>
+                <li onClick="dropDownExperienceListValue('18')"><a class="dropdown-item">18년차</a></li>
+                <li onClick="dropDownExperienceListValue('19')"><a class="dropdown-item">19년차</a></li>
+                <li onClick="dropDownExperienceListValue('20')"><a class="dropdown-item">20년차 이상</a></li>
+            </ul>
+          </div><br>
 
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">연차</label>
-                    <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="experience-button-list" data-bs-toggle="dropdown" aria-expanded="false">
-                    --연차선택--
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li onClick="dropDownExperienceListValue('0')"><a class="dropdown-item">신입</a></li>
-                        <li onClick="dropDownExperienceListValue('1')"><a class="dropdown-item">1년차</a></li>
-                        <li onClick="dropDownExperienceListValue('2')"><a class="dropdown-item">2년차</a></li>
-                        <li onClick="dropDownExperienceListValue('3')"><a class="dropdown-item">3년차</a></li>
-                        <li onClick="dropDownExperienceListValue('4')"><a class="dropdown-item">4년차</a></li>
-                        <li onClick="dropDownExperienceListValue('5')"><a class="dropdown-item">5년차</a></li>
-                        <li onClick="dropDownExperienceListValue('6')"><a class="dropdown-item">6년차</a></li>
-                        <li onClick="dropDownExperienceListValue('7')"><a class="dropdown-item">7년차</a></li>
-                        <li onClick="dropDownExperienceListValue('8')"><a class="dropdown-item">8년차</a></li>
-                        <li onClick="dropDownExperienceListValue('9')"><a class="dropdown-item">9년차</a></li>
-                        <li onClick="dropDownExperienceListValue('10')"><a class="dropdown-item">10년차</a></li>
-                        <li onClick="dropDownExperienceListValue('11')"><a class="dropdown-item">11년차</a></li>
-                        <li onClick="dropDownExperienceListValue('12')"><a class="dropdown-item">12년차</a></li>
-                        <li onClick="dropDownExperienceListValue('13')"><a class="dropdown-item">13년차</a></li>
-                        <li onClick="dropDownExperienceListValue('14')"><a class="dropdown-item">14년차</a></li>
-                        <li onClick="dropDownExperienceListValue('15')"><a class="dropdown-item">15년차</a></li>
-                        <li onClick="dropDownExperienceListValue('16')"><a class="dropdown-item">16년차</a></li>
-                        <li onClick="dropDownExperienceListValue('17')"><a class="dropdown-item">17년차</a></li>
-                        <li onClick="dropDownExperienceListValue('18')"><a class="dropdown-item">18년차</a></li>
-                        <li onClick="dropDownExperienceListValue('19')"><a class="dropdown-item">19년차</a></li>
-                        <li onClick="dropDownExperienceListValue('20')"><a class="dropdown-item">20년차 이상</a></li>
-                    </ul>
-                </div>                        
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">키워드추천리스트</label>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="keyword-button-list" data-bs-toggle="dropdown" aria-expanded="false">
+                --------------------키워드선택--------------------
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li onClick="dropDouwnKeywordListValue('빅데이터')"><a class="dropdown-item">빅데이터</a></li>
+                    <li onClick="dropDouwnKeywordListValue('인공지능')"><a class="dropdown-item">인공지능</a></li>
+                    <li onClick="dropDouwnKeywordListValue('자바')"><a class="dropdown-item">자바</a></li>
+                    <li onClick="dropDouwnKeywordListValue('코틀린')"><a class="dropdown-item">코틀린</a></li>
+                    <li onClick="dropDouwnKeywordListValue('Swift')"><a class="dropdown-item">Swift</a></li>
+                    <li onClick="dropDouwnKeywordListValue('블록체인')"><a class="dropdown-item">블록체인</a></li>
+                    <li onClick="dropDouwnKeywordListValue('자바스크립트')"><a class="dropdown-item">자바스크립트</a></li>
+                </ul>
+            </div>
+          </div>
 
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">키워드추천리스트</label>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="keyword-button-list" data-bs-toggle="dropdown" aria-expanded="false">
-                        --키워드선택--
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li onClick="dropDouwnKeywordListValue('빅데이터')"><a class="dropdown-item">빅데이터</a></li>
-                            <li onClick="dropDouwnKeywordListValue('인공지능')"><a class="dropdown-item">인공지능</a></li>
-                            <li onClick="dropDouwnKeywordListValue('자바')"><a class="dropdown-item">자바</a></li>
-                            <li onClick="dropDouwnKeywordListValue('코틀린')"><a class="dropdown-item">코틀린</a></li>
-                            <li onClick="dropDouwnKeywordListValue('Swift')"><a class="dropdown-item">Swift</a></li>
-                            <li onClick="dropDouwnKeywordListValue('블록체인')"><a class="dropdown-item">블록체인</a></li>
-                            <li onClick="dropDouwnKeywordListValue('자바스크립트')"><a class="dropdown-item">자바스크립트</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">선택한 키워드</label>
-                    <div id="keyword-list"></div>
-                </div>
-
-                <!-- 2 column grid layout for inline styling -->
-                <div class="row mb-4">
-                    <div class="col d-flex justify-content-center">
-                    </div>
-                </div>
-            <!-- Submit button -->
-            <button type="button" onClick="signupSubmit()" class="btn btn-primary btn-block mb-4">회원가입</button>    
-          </div>      
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example2">선택한 키워드</label>
+              <div id="keyword-list"></div>
+          </div>
+      
+          <!-- Submit button -->
+          <button id="signup-btn" onClick="loginSubmit()" type="button" class="btn btn-secondary btn-block mb-4">회원가입</button>
+        </div>
         `;
 };
 
@@ -118,19 +108,23 @@ let signupSubmit = () => {
   let xhr = new XMLHttpRequest();
   let signupId = document.querySelector("#form-signup-id").value;
   let signupPassword = document.querySelector("#form-signup-password").value;
-  let signupPasswordConfirm = document.querySelector(
-    "#form-signup-password-confirm"
-  ).value;
+  let signupPasswordConfirm = document.querySelector("#form-signup-password-confirm").value;
   let signupNickname = document.querySelector("#form-signup-nickname").value;
 
   let signupJob = String(document.querySelector("#job-button-list").innerHTML);
-  let signupExperience = String(
-    document.querySelector("#experience-button-list").innerHTML
-  ).replace("년차", "");
-  let dropDouwnKeywordList = String(
-    document.querySelector("#keyword-list").innerHTML
-  );
+  let signupExperience = String(document.querySelector("#experience-button-list").innerHTML).replace("년차", "");
+  let dropDouwnKeywordList = String(document.querySelector("#keyword-list").innerHTML);
   let keywordList = dropDouwnKeywordList.split(" ");
+
+  if(!checkLoginId(signupId)) return;
+  if(!checkPassword(signupPassword)) return;
+  if(!checkPassword(signupPasswordConfirm)) return;
+
+  if(signupPassword!=signupPasswordConfirm) {
+    alert("비밀번호 혹시 비밀번호확인의 데이터가 일치하지 않습니다");
+    return;
+  }
+
   //if(!checkDuplicateLoginId()) return;
   //if(!checkDuplicateNickname()) return;
   signupKeyword1 = isEmptyInsertNull(keywordList[0]);
@@ -259,3 +253,19 @@ let checkDuplicateLoginId = () => {
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(requestData);
 };
+
+let checkLoginId = (loginId) => {
+  if(!/^[a-z]+[a-z0-9]{3,19}$/g.test(loginId)) {
+    alert("아이디는 영문자와 숫자 포함하여 4 ~ 20자 이상이어야 합니다.");
+    return false;
+  }
+  return true;
+}
+
+let checkPassword = (password) => {
+  if(!/^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).{8,20}$/.test(password)){
+    alert("비밀번호는 영문과 특수문자 숫자를 포함하며 8자 이상이어야 합니다.");
+    return false;
+  }
+  return true;
+}

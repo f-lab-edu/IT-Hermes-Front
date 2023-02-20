@@ -194,16 +194,16 @@ let getCategoryEntireCnt = () => {
             jobCnt = data.jobCnt;
             newsCnt = data.newsCnt;
 
-            youtubeLastLine= youtubeCnt/8;
-            if(youtubeCnt%8>0) {
+            youtubeLastLine= youtubeCnt/12;
+            if(youtubeCnt%12>0) {
                 youtubeLastLine+=1;
             }
-            jobLastLine= jobCnt/8;
-            if(jobCnt%8>0) {
+            jobLastLine= jobCnt/12;
+            if(jobCnt%12>0) {
                 jobLastLine+=1;
             }
-            newsLastLine= newsCnt/8;
-            if(newsCnt%8>0) {
+            newsLastLine= newsCnt/12;
+            if(newsCnt%12>0) {
                 newsLastLine+=1;
             }
             

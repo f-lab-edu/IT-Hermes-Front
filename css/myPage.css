@@ -1,0 +1,54 @@
+/* 마이페이지 아이디 input 태그 */
+#my-page-info{
+    margin: auto;
+    width: 200px;
+    height: 300px;
+    position:relative;
+}
+#change-nickname-id {
+    margin: auto;
+    display: block;
+}
+
+#login-info{
+    margin: auto;
+    width: 200px;
+    height: 300px;
+    position:relative;
+}
+/* 로그인 버튼 설정 */
+#login-btn {
+    margin: auto;
+    display: block;
+}
+
+#signup-info{
+    margin: auto;
+    width: 400px;
+    position:relative;
+}
+/* 로그인 버튼 설정 */
+#signup-btn {
+    margin: auto;
+    display: block;
+}
+#form-signup-id {
+    width: 260px;
+    display: inline-block;
+}
+#duplicate-id {
+    width: 130px;
+    display: inline-block;
+    margin-bottom: 0.25rem!important;
+}
+#form-signup-nickname {
+    width: 260px;
+    display: inline-block;
+}
+#nickname-id {
+    width: 130px;
+    display: inline-block;
+    margin-bottom: 0.25rem!important;
+}
+
+

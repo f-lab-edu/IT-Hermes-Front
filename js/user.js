@@ -23,28 +23,22 @@ let isAccountLogout = () => {
 let moveLoginPage = () => {
     let info = document.querySelector('#section-info');
     info.innerHTML=`
-    <form style="margin-left: 600px;margin-right: 600px;text-align:center">
+    <div id="login-info">
         <!-- Email input -->
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example1">아이디</label>
-            <input type="email" id="form-login-id" class="form-control" />  
+            <input type="email" id="form-login-id" class="form-control" placeholder="아이디를 입력해주세요"/>  
         </div>
     
         <!-- Password input -->
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example2">패스워드</label>
-            <input type="password" id="form-login-password" class="form-control" />        
-        </div>
-    
-        <!-- 2 column grid layout for inline styling -->
-        <div class="row mb-4">
-            <div class="col d-flex justify-content-center">
-            </div>
+            <input type="password" id="form-login-password" class="form-control" placeholder="패스워드를 입력해주세요"/>        
         </div>
     
         <!-- Submit button -->
-        <button onClick="loginSubmit()" type="button" class="btn btn-primary btn-block mb-4">Log in</button>
-    </form>            
+        <button id="login-btn" onClick="loginSubmit()" type="button" class="btn btn-secondary btn-block mb-4">로그인</button>
+    </div>            
     `;
 }
 
@@ -87,9 +81,8 @@ let isAccountMypage = () => {
             let response = JSON.parse(xhr.responseText);
             let info = document.querySelector('#section-info');
             info.innerHTML=`
-            <!-- Email input -->
-            <button id="change-nickname-id" onClick="changeNickname('${response.nickname}')" style="margin-left: 1050px;top: 160px;position: relative;">닉네임 변경</button>  
-            <div id="my-page-info" style="margin-left: 600px;margin-right: 600px;">
+            <!-- Email input -->  
+            <div id="my-page-info">
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example1">아이디</label>
                     <input type="email" id="form-login-id" class="form-control" value="${response.id}" disabled/>
@@ -98,7 +91,8 @@ let isAccountMypage = () => {
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example2">닉네임</label>
                     <input type="text" id="form-login-nickname" class="form-control" value="${response.nickname}" />
-                </div>      
+                </div>
+                <button id="change-nickname-id" onClick="changeNickname('${response.nickname}')" type="button" class="btn btn-secondary btn-block mb-4">닉네임 변경</button>
             </div>
             `
         }
