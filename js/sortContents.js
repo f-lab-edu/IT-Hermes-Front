@@ -242,7 +242,7 @@ let dropDownListValue2 = (e) => {
         tmp='ID';
     }
     keyword.innerHTML=e;
-    sortData=e;
+    sortData=tmp;
     submit(categoryData,tmp,pageData);
 }
 
