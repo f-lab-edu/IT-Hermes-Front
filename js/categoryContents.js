@@ -16,7 +16,7 @@ let categoryYoutube = () => {
             let dataList = '';
             let info = document.querySelector('#section-info');
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 12; i++) {
                 dataList +=
                     `<div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
                         <div class="card h-100">
@@ -61,7 +61,7 @@ let categoryNews = () => {
             let info = document.querySelector('#section-info2');
             let newsDataList = '';
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 12; i++) {
                 newsDataList += `
                 <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
                 <div class="card h-100">
@@ -101,7 +101,7 @@ let categoryJob = () => {
 
             let jobDataList = '';
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 12; i++) {
                 if(data[i].contentsProviderType=='SARAMIN') {
                     jobDataList+=`
                     <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
