@@ -99,7 +99,7 @@ let isAccountSignUp = () => {
           </div>
       
           <!-- Submit button -->
-          <button id="signup-btn" onClick="loginSubmit()" type="button" class="btn btn-secondary btn-block mb-4">회원가입</button>
+          <button id="signup-btn" onClick="signupSubmit()" type="button" class="btn btn-secondary btn-block mb-4">회원가입</button>
         </div>
         `;
 };

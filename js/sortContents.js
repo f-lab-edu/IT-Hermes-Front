@@ -15,6 +15,7 @@ let sortContents = () => {
                     <li onClick="dropDownListValue('JOB')"><a class="dropdown-item">채용</a></li>
                 </ul>
             </div>
+            
             <div class="dropdown" id="category-select2">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="category2-list" data-bs-toggle="dropdown" aria-expanded="false">
                 --키워드선택--
@@ -38,7 +39,7 @@ let sortContents = () => {
             infoContents.innerHTML = '';
             for (let i = 0; i < data.length; i++) {
                 pageDataList+=`
-                    <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
+                    <div class="col mb-5" id="main-contents" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                         <div class="card h-100">
                             <img class="mainContents-image" id="mainImage" src="${data[i].image}" alt="..." />
                             <div class="card-body p-4">
@@ -58,7 +59,7 @@ let sortContents = () => {
             infoContents.innerHTML += `
             <div class="container px-4 px-lg-5 mt-5">
                 <h5 class="fw-bolder"></h5>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${pageDataList}</div>
+                <div id="entire-contents-box" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${pageDataList}</div>
             </div>
             <div class="container" style="position:absolute; left:40%;">
                     <ul class="pagination" id="page-info"></ul>
@@ -100,7 +101,7 @@ let submit = (m1, m2, m3) => {
             if(m1!='JOB') {
                 for (let i = 0; i < data.length; i++) {
                     pageDataList+=`
-                        <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
+                        <div class="col mb-5" id="main-contents" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
                                 <img class="mainContents-image" id="mainImage" src="${data[i].image}" alt="..." />
                                 <div class="card-body p-4">
@@ -120,7 +121,7 @@ let submit = (m1, m2, m3) => {
                 for (let i = 0; i < data.length; i++) {
                     if(data[i].contentProvider=='SARAMIN') {
                         pageDataList+=`
-                        <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
+                        <div class="col mb-5" id="main-contents" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
                                 <img class="mainContents-image" id="mainImage" src="/image/saramin_default.png" alt="..." />
                                 <div class="card-body p-4">
@@ -137,7 +138,7 @@ let submit = (m1, m2, m3) => {
                         `
                     } else if(data[i].contentProvider=='WANTED') {
                         pageDataList+=`
-                        <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
+                        <div class="col mb-5" id="main-contents" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
                             <div class="card h-100">
                                 <img class="mainContents-image" id="mainImage" src="/image/wanted_default.png" alt="..." />
                                 <div class="card-body p-4">
@@ -160,7 +161,7 @@ let submit = (m1, m2, m3) => {
             infoContents.innerHTML += `
             <div class="container px-4 px-lg-5 mt-5">
                 <h5 class="fw-bolder"></h5>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${pageDataList}</div>
+                <div id="entire-contents-box" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${pageDataList}</div>
             </div>
             <div class="container" style="position:absolute; left:40%;">
                     <ul class="pagination" id="page-info"></ul>
@@ -194,16 +195,16 @@ let getCategoryEntireCnt = () => {
             jobCnt = data.jobCnt;
             newsCnt = data.newsCnt;
 
-            youtubeLastLine= youtubeCnt/8;
-            if(youtubeCnt%8>0) {
+            youtubeLastLine= youtubeCnt/12;
+            if(youtubeCnt%12>0) {
                 youtubeLastLine+=1;
             }
-            jobLastLine= jobCnt/8;
-            if(jobCnt%8>0) {
+            jobLastLine= jobCnt/12;
+            if(jobCnt%12>0) {
                 jobLastLine+=1;
             }
-            newsLastLine= newsCnt/8;
-            if(newsCnt%8>0) {
+            newsLastLine= newsCnt/12;
+            if(newsCnt%12>0) {
                 newsLastLine+=1;
             }
             
@@ -276,45 +277,45 @@ let buttonPagenation = (category, pageIndex) => {
     // 1 2 3(17 18 19)
     if(pageIndex==0) {
         if(lastLine<=8) {
-            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`
+            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Previous</a></li>`
             for(let i=1;i<=lastLine;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
                     <li class="page-item active">
-                        <a class="page-link" onClick="sort_click(${i-1})">${i}<span class="sr-only"></span></a>
+                        <a class="page-link" onClick="sort_click(${i-1})" style="cursor:pointer;">${i}<span class="sr-only"></span></a>
                     </li>
                 `;
                 } else{
                     pageInfo.innerHTML+=`
-                    <li class="page-item"><a class="page-link" onClick="sort_click(${i-1})">${i}</a></li>
+                    <li class="page-item"><a class="page-link" onClick="sort_click(${i-1})" style="cursor:pointer;">${i}</a></li>
                 `;
                 }
             }
-            pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>`;
+            pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Next</a></li>`;
         } else {
             // 0부터 시작인데, 데이터가 64개를 넘는경우..!
             let lastButton;
             let startButton;
             startButton=1;
             lastButton=8;
-            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`
+            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Previous</a></li>`
             for(let i=startButton;i<=lastButton;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
                     <li class="page-item active">
-                        <a class="page-link" onClick="sort_click(${i-1})">${i}<span class="sr-only"></span></a>
+                        <a class="page-link" onClick="sort_click(${i-1})" style="cursor:pointer;">${i}<span class="sr-only"></span></a>
                     </li>
                 `;
                 } else{
                     pageInfo.innerHTML+=`
-                    <li class="page-item"><a class="page-link" onClick="sort_click(${i-1})">${i}</a></li>
+                    <li class="page-item"><a class="page-link" onClick="sort_click(${i-1})" style="cursor:pointer;">${i}</a></li>
                 `;
                 }
             }
             if(lastLine==lastButton/8) {
-                pageInfo.innerHTML+=`<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>`;
+                pageInfo.innerHTML+=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Next</a></li>`;
             } else {
-                pageInfo.innerHTML+=`<li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','2')">Next</a></li>`;
+                pageInfo.innerHTML+=`<li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','2')" style="cursor:pointer;">Next</a></li>`;
             }
         }         
     } else {        
@@ -326,21 +327,21 @@ let buttonPagenation = (category, pageIndex) => {
 
         //(이슈) 예를들어 32개까지 있으면 8개가 나오지 않고 4개가 나와야되는데.. 8개나옴..
         if(lastLine<=8) {
-            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`
+            pageInfo.innerHTML=`<li class="page-item disabled" style="cursor:pointer;"><a class="page-link" href="#">Previous</a></li>`
             for(let i=1;i<=lastLine;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
                     <li class="page-item active">
-                        <a class="page-link" onClick="sort_click(${i-1})">${i}<span class="sr-only"></span></a>
+                        <a class="page-link" onClick="sort_click(${i-1})" style="cursor:pointer;">${i}<span class="sr-only"></span></a>
                     </li>
                 `;
                 } else{
                     pageInfo.innerHTML+=`
-                    <li class="page-item"><a class="page-link" onClick="sort_click(${i-1})">${i}</a></li>
+                    <li class="page-item"><a class="page-link" onClick="sort_click(${i-1})" style="cursor:pointer;">${i}</a></li>
                 `;
                 }
             }
-            pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>`;
+            pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Next</a></li>`;
         } else {
             let lastButton;
             let startButton;
@@ -359,27 +360,27 @@ let buttonPagenation = (category, pageIndex) => {
             }
             
             if(pageIndex<8 && currentPageLine<2) {
-                pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`
+                pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Previous</a></li>`
             } else {
-                pageInfo.innerHTML=`<li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','${currentPageLine-1}')">Previous</a></li>`
+                pageInfo.innerHTML=`<li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','${currentPageLine-1}')" style="cursor:pointer;">Previous</a></li>`
             }
             for(let i=startButton;i<=lastButton;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
                     <li class="page-item active">
-                        <a class="page-link" onClick="sort_click(${i-1})">${i}<span class="sr-only"></span></a>
+                        <a class="page-link" onClick="sort_click(${i-1})" style="cursor:pointer;">${i}<span class="sr-only"></span></a>
                     </li>
                 `;
                 } else{
                     pageInfo.innerHTML+=`
-                    <li class="page-item"><a class="page-link" onClick="sort_click(${i-1})">${i}</a></li>
+                    <li class="page-item"><a class="page-link" onClick="sort_click(${i-1})" style="cursor:pointer;">${i}</a></li>
                 `;
                 }
             }
             if(lastButton==limitPageLine) {
-                pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>`;
+                pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Next</a></li>`;
             } else {
-                pageInfo.innerHTML+=` <li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','${currentPageLine+1}')">Next</a></li>`;
+                pageInfo.innerHTML+=` <li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','${currentPageLine+1}')" style="cursor:pointer;">Next</a></li>`;
             }
         }  
     }

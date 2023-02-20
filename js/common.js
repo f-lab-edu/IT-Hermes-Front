@@ -28,55 +28,17 @@ let isActiveMain = () => {
         defaultServerUrl=`https://it-hermes.site/api`;
     }
     console.log(defaultServerUrl);
-    let xhr = new XMLHttpRequest();
+
     if(getCookie(accessAuthentification)==null) {
-        
-       // moveLoginPage(); // 쿠키정보가 없을 경우 설정
-       xhr.onreadystatechange=() => {
-        if(xhr.readyState == 4 && xhr.status==200) {
-            let account = document.querySelector('#account-info');
-            account.innerHTML=`
-            <li class="nav-item"><a class="nav-link" onclick="moveLoginPage()" style="cursor: grab;">로그인</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="isAccountSignUp()" style="cursor: grab;">회원가입</a></li>
-            `
+        let account = document.querySelector('#account-info');
+        account.innerHTML=`
+        <li class="nav-item"><a class="nav-link" onclick="moveLoginPage()" style="cursor: grab;">로그인</a></li>
+        <li class="nav-item"><a class="nav-link" onclick="isAccountSignUp()" style="cursor: grab;">회원가입</a></li>
+        `
 
-            document.querySelector('#section-info2').innerHTML='';
-            document.querySelector('#section-info3').innerHTML='';
-            let data = JSON.parse(xhr.responseText);
-
-            let top10Section = document.querySelector('#section-info');
-            let top10DataList = '';
-
-            for(let i=0; i<12; i++){
-                top10DataList+=`
-                <div class="col mb-5" onclick="addViewCount('${data[i].url}','${data[i].contentsProviderType}')">
-                    <div class="card h-100">
-                        <img class="mainContents-image" id="mainImage" src="${data[i].image}" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <h5 class="mainContents-title">${data[i].title}</h5>
-                                <p class="mainContents-service">${data[i].contentsProviderType}</p>
-                                <p class="mainContents-category">${data[i].category}</p>
-                                <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
-                                <p class="mainContents-cnt">조회수 : ${data[i].viewCnt}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                `;
-            }
-
-            top10Section.innerHTML=`
-                <div class="container px-4 px-lg-5 mt-5">
-                    <h5 class="fw-bolder">TOP-12</h5>
-                        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${top10DataList}</div>
-                </div>`;
-        }
-    }
-        xhr.open("GET", defaultServerUrl+`/contents/main?type=YOUTUBE_AND_NEWS`, true);
-        xhr.setRequestHeader(accessAuthentification,getCookie(accessAuthentification));
-        xhr.setRequestHeader("Content-Type","application/json");
-        xhr.send();
+        document.querySelector('#section-info2').innerHTML='';
+        document.querySelector('#section-info3').innerHTML='';        
+        top12Contents();
     } else {
         let account = document.querySelector('#account-info');
 
@@ -89,9 +51,12 @@ let isActiveMain = () => {
                 <li class="nav-item"><a class="nav-link" onClick="isAccountMypage()" style="cursor: grab;">마이페이지</a></li>
                 <li class="nav-item"><a class="nav-link" onClick="isChangeSubscribe()" style="cursor: grab;">구독</a></li>
                 <div class="dropdown-divider"></div>
-                <li class="nav-item"><a class="nav-link" onClick="isAccountLogout()" style="cursor: grab;">로그아웃</a></li>
+                <li class="nav-item"><a class="nav-link" onClick="isAccountLogout()" style="cursor: grab;color:red">로그아웃</a></li>
             </ul>
         </div>
+        <li class="nav-item"><a class="nav-link" onClick="top12Contents()" style="cursor: grab;">TOP-12(전체)</a></li>
+        <li class="nav-item"><a class="nav-link" onClick="top12SeveralCategory()" style="cursor: grab;">TOP-12(카테고리별)</a></li>
+        <li class="nav-item"><a class="nav-link" onClick="sortContents()" style="cursor: grab;">카테고리(정렬)</a></li>
         `
         categoryYoutube();
         categoryNews();
@@ -213,4 +178,16 @@ let convertDate = (originalDate) => {
         }
     }
     return modifiedDate;
+}
+
+let top12SeveralCategory = () => {
+    if(document.querySelector('#category-list')!=null) {
+        document.querySelector('#category-list').style.display = "none";
+    }
+    if(document.querySelector('#category2-list')!=null) {
+        document.querySelector('#category2-list').style.display = "none";
+    }
+    categoryYoutube();
+    categoryNews();
+    categoryJob();    
 }
