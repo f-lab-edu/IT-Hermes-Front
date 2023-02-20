@@ -79,13 +79,20 @@ let isActiveMain = () => {
         xhr.send();
     } else {
         let account = document.querySelector('#account-info');
-        account.innerHTML=`
-        <li class="nav-item" id="user-id-info"><a class="nav-link active" aria-current="page" href="/" style="cursor: grab;">${localStorage.getItem('loginId')}님</a></li>
-        <li class="nav-item"><a class="nav-link" onClick="isAccountMypage()" style="cursor: grab;">마이페이지</a></li>
-        <li class="nav-item"><a class="nav-link" onClick="isAccountLogout()" style="cursor: grab;">로그아웃</a></li>
-        <li class="nav-item"><a class="nav-link" onClick="isChangeSubscribe()" style="cursor: grab;">구독</a></li>
-        `
 
+        account.innerHTML=`
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="job-button-list" data-bs-toggle="dropdown" aria-expanded="false">
+            ${localStorage.getItem('loginId')}님
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li class="nav-item"><a class="nav-link" onClick="isAccountMypage()" style="cursor: grab;">마이페이지</a></li>
+                <li class="nav-item"><a class="nav-link" onClick="isChangeSubscribe()" style="cursor: grab;">구독</a></li>
+                <div class="dropdown-divider"></div>
+                <li class="nav-item"><a class="nav-link" onClick="isAccountLogout()" style="cursor: grab;">로그아웃</a></li>
+            </ul>
+        </div>
+        `
         categoryYoutube();
         categoryNews();
         categoryJob();
