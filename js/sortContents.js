@@ -139,7 +139,7 @@ let submit = (m1, m2, m3) => {
                 <h5 class="fw-bolder"></h5>
                 <div id="entire-contents-box" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${pageDataList}</div>
             </div>
-            <div class="container" style="position:absolute; left:40%;">
+            <div class="container" style="position: relative;margin: auto;width: 500px;">
                     <ul class="pagination" id="page-info"></ul>
             </div>
             `     
@@ -249,7 +249,7 @@ let buttonPagenation = (category, pageIndex) => {
     // 1 2 3(17 18 19)
     if(pageIndex==0) {
         if(lastLine<=8) {
-            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Previous</a></li>`
+            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">이전</a></li>`
             for(let i=1;i<=lastLine;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
@@ -263,14 +263,14 @@ let buttonPagenation = (category, pageIndex) => {
                 `;
                 }
             }
-            pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Next</a></li>`;
+            pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">다음</a></li>`;
         } else {
             // 0부터 시작인데, 데이터가 64개를 넘는경우..!
             let lastButton;
             let startButton;
             startButton=1;
             lastButton=8;
-            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Previous</a></li>`
+            pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">이전</a></li>`
             for(let i=startButton;i<=lastButton;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
@@ -285,9 +285,9 @@ let buttonPagenation = (category, pageIndex) => {
                 }
             }
             if(lastLine==lastButton/8) {
-                pageInfo.innerHTML+=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Next</a></li>`;
+                pageInfo.innerHTML+=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">다음</a></li>`;
             } else {
-                pageInfo.innerHTML+=`<li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','2')" style="cursor:pointer;">Next</a></li>`;
+                pageInfo.innerHTML+=`<li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','2')" style="cursor:pointer;">다음</a></li>`;
             }
         }         
     } else {        
@@ -299,7 +299,7 @@ let buttonPagenation = (category, pageIndex) => {
 
         //(이슈) 예를들어 32개까지 있으면 8개가 나오지 않고 4개가 나와야되는데.. 8개나옴..
         if(lastLine<=8) {
-            pageInfo.innerHTML=`<li class="page-item disabled" style="cursor:pointer;"><a class="page-link" href="#">Previous</a></li>`
+            pageInfo.innerHTML=`<li class="page-item disabled" style="cursor:pointer;"><a class="page-link" href="#">이전</a></li>`
             for(let i=1;i<=lastLine;i++) {
                 if(pageIndex+1==i) {
                     pageInfo.innerHTML+=`
@@ -313,7 +313,7 @@ let buttonPagenation = (category, pageIndex) => {
                 `;
                 }
             }
-            pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Next</a></li>`;
+            pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">다음</a></li>`;
         } else {
             let lastButton;
             let startButton;
@@ -332,9 +332,9 @@ let buttonPagenation = (category, pageIndex) => {
             }
             
             if(pageIndex<8 && currentPageLine<2) {
-                pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Previous</a></li>`
+                pageInfo.innerHTML=`<li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">이전</a></li>`
             } else {
-                pageInfo.innerHTML=`<li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','${currentPageLine-1}')" style="cursor:pointer;">Previous</a></li>`
+                pageInfo.innerHTML=`<li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','${currentPageLine-1}')" style="cursor:pointer;">이전</a></li>`
             }
             for(let i=startButton;i<=lastButton;i++) {
                 if(pageIndex+1==i) {
@@ -350,9 +350,9 @@ let buttonPagenation = (category, pageIndex) => {
                 }
             }
             if(lastButton==limitPageLine) {
-                pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">Next</a></li>`;
+                pageInfo.innerHTML+=` <li class="page-item disabled"><a class="page-link" href="#" style="cursor:pointer;">다음</a></li>`;
             } else {
-                pageInfo.innerHTML+=` <li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','${currentPageLine+1}')" style="cursor:pointer;">Next</a></li>`;
+                pageInfo.innerHTML+=` <li class="page-item"><a class="page-link" onclick="movePrevAndNextLine('${category}','${currentPageLine+1}')" style="cursor:pointer;">다음</a></li>`;
             }
         }  
     }
