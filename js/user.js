@@ -5,7 +5,6 @@ let isAccountLogout = () => {
             localStorage.removeItem('loginId');
             deleteCookie(accessAuthentification);
             deleteCookie(refreshAuthentification);
-            document.querySelector('#subscribe-info').style.display='none';
             isActiveMain();
         }
         if(xhr.readyState==4 && xhr.status==401) {
