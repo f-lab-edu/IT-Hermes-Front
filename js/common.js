@@ -77,7 +77,6 @@ let isActiveMain = () => {
         categoryYoutube();
         categoryNews();
         categoryJob();
-        findSubscribe(); 
     }
 }
 

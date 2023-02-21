@@ -62,7 +62,7 @@ value.innerHTML += `<div class="card" style="width: 18rem; float:left;" id="subs
 
 let subscribeBtn = document.querySelector('#section-info2');
 subscribeBtn.innerHTML = `<button type="button" onClick="subscribeSubmit()" class="btn btn-secondary btn-block mb-4">구독</button>`;
-
+findSubscribe();
 };
 
 let isChangeActive = (id) => {
@@ -76,7 +76,6 @@ let isChangeActive = (id) => {
 
 let isReturnActiveValue = (id) => {
   let activeValue = document.getElementById(id);
-  console.log(activeValue.innerHTML);
   if (activeValue.innerHTML == "활성화") {
     return "ACTIVE";
   } else {
@@ -89,8 +88,6 @@ let isReturnContentsProviderValue = (id) => {
     return "SARAMIN";
   } else if (id == "wanted_active") {
     return "WANTED";
-  } else if (id == "naver_active") {
-    return "NAVER";
   } else if (id == "yozm_active") {
     return "YOZM";
   } else if (id == "coding_world_active") {
@@ -106,9 +103,7 @@ let isUpdateContentsProviderActiveValue = (name, active) => {
     document.getElementById("saramin_active").innerHTML = "활성화";
   } else if (name == "WANTED" && active == "ACTIVE") {
     document.getElementById("wanted_active").innerHTML = "활성화";
-  } else if (name == "NAVER" && active == "ACTIVE") {
-    document.getElementById("naver_active").innerHTML = "활성화";
-  } else if (name == "YOZM" && active == "ACTIVE") {
+  }  else if (name == "YOZM" && active == "ACTIVE") {
     document.getElementById("yozm_active").innerHTML = "활성화";
   } else if (name == "CODING_WORLD" && active == "ACTIVE") {
     document.getElementById("coding_world_active").innerHTML = "활성화";
@@ -131,10 +126,6 @@ let subscribeSubmit = () => {
       {
         contentsProvider: isReturnContentsProviderValue("wanted_active"),
         isActive: isReturnActiveValue("wanted_active"),
-      },
-      {
-        contentsProvider: isReturnContentsProviderValue("naver_active"),
-        isActive: isReturnActiveValue("naver_active"),
       },
       {
         contentsProvider: isReturnContentsProviderValue("yozm_active"),
@@ -174,6 +165,7 @@ let subscribeSubmit = () => {
       }  
     }
   };
+  console.log(requestData);
   xhr.open("PUT", defaultServerUrl + `/subscribe/`, true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.setRequestHeader(accessAuthentification, getCookie(accessAuthentification));
@@ -191,6 +183,7 @@ let findSubscribe = () => {
   xhr.onreadystatechange = () => {
     if (xhr.readyState == 4 && xhr.status == 200) {
       let data = JSON.parse(xhr.responseText);
+      console.log(data);
       if (data.length > 0) {
         isUpdateContentsProviderActiveValue(
           data[0].contentsProvider,
@@ -215,10 +208,6 @@ let findSubscribe = () => {
         isUpdateContentsProviderActiveValue(
           data[5].contentsProvider,
           data[5].isActive
-        );
-        isUpdateContentsProviderActiveValue(
-          data[6].contentsProvider,
-          data[6].isActive
         );
       }
     } 
