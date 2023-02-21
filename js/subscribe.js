@@ -63,7 +63,8 @@ value.innerHTML += `<div class="card" style="width: 300px;height:200px;margin-le
 </div>`;
 
 let subscribeBtn = document.querySelector('#section-info2');
-subscribeBtn.innerHTML = `<button type="button" onClick="subscribeSubmit()" class="btn btn-secondary btn-block mb-4" style="margin-left: 25%;">구독하기</button>`;
+
+subscribeBtn.innerHTML = `<button type="button" onClick="subscribeSubmit()" class="btn btn-secondary btn-block mb-4" style="margin: auto;display:block;">구독하기</button>`;
 findSubscribe();
 };
 
