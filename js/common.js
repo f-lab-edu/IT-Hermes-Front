@@ -66,6 +66,7 @@ let isActiveMain = () => {
                 <li onClick="dropDownListValue('NEWS')"><a class="dropdown-item">뉴스</a></li>
                 <li onClick="dropDownListValue('YOUTUBE')"><a class="dropdown-item">유튜브</a></li>
                 <li onClick="dropDownListValue('JOB')"><a class="dropdown-item">채용</a></li>
+                <div class="dropdown-divider"></div>
                 <li><h5 class="dropdown-header">정렬 선택</h5></li>
                 <div class="dropdown-divider"></div>
                 <li onClick="dropDownListValue2('최신순')"><a class="dropdown-item">최신순</a></li>
