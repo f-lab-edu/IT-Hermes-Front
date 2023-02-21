@@ -61,13 +61,12 @@ value.innerHTML += `<div class="card" style="width: 18rem; float:left;" id="subs
 </div>`;
 
 let subscribeBtn = document.querySelector('#section-info2');
-subscribeBtn.innerHTML = `<button id="subscribe-btn" onClick="subscribeSubmit()" type="button" class="btn btn-secondary btn-block mb-4">구독</button>`;
+subscribeBtn.innerHTML = `<button type="button" onClick="subscribeSubmit()" class="btn btn-secondary btn-block mb-4">구독</button>`;
 
 };
 
 let isChangeActive = (id) => {
   let activeValue = document.getElementById(id);
-  console.log(activeValue);
   if (activeValue.innerHTML == "활성화") {
     activeValue.innerHTML = "비활성화";
   } else {
@@ -77,6 +76,7 @@ let isChangeActive = (id) => {
 
 let isReturnActiveValue = (id) => {
   let activeValue = document.getElementById(id);
+  console.log(activeValue.innerHTML);
   if (activeValue.innerHTML == "활성화") {
     return "ACTIVE";
   } else {
