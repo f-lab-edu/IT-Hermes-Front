@@ -71,4 +71,11 @@
 {
     background-color: gray;
     border: solid 1px gray;
+    padding-top: 20px;
+    margin-left: 200px;
+}
+
+#subscribecard{
+    text-align: center;
+    display: inline-block;
 }
