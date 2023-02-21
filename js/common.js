@@ -56,7 +56,23 @@ let isActiveMain = () => {
         </div>
         <li class="nav-item"><a class="nav-link" onClick="top12Contents()" style="cursor: grab;">TOP-12(전체)</a></li>
         <li class="nav-item"><a class="nav-link" onClick="top12SeveralCategory()" style="cursor: grab;">TOP-12(카테고리별)</a></li>
-        <li class="nav-item"><a class="nav-link" onClick="sortContents()" style="cursor: grab;">카테고리(정렬)</a></li>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="job-button-list" data-bs-toggle="dropdown" aria-expanded="false">
+                카테고리(정렬)
+            </button>
+            <ul class="dropdown-menu">
+                <li><h5 class="dropdown-header">카테고리 선택</h5></li>
+                <div class="dropdown-divider"></div>
+                <li onClick="dropDownListValue('NEWS')"><a class="dropdown-item">뉴스</a></li>
+                <li onClick="dropDownListValue('YOUTUBE')"><a class="dropdown-item">유튜브</a></li>
+                <li onClick="dropDownListValue('JOB')"><a class="dropdown-item">채용</a></li>
+                <li><h5 class="dropdown-header">정렬 선택</h5></li>
+                <div class="dropdown-divider"></div>
+                <li onClick="dropDownListValue2('최신순')"><a class="dropdown-item">최신순</a></li>
+                <li onClick="dropDownListValue2('인기순')"><a class="dropdown-item">인기순</a></li>
+                <li onClick="dropDownListValue2('서비스 추천순')"><a class="dropdown-item">서비스 추천순</a></li>
+            </ul>
+        </div>
         `
         categoryYoutube();
         categoryNews();
@@ -180,13 +196,17 @@ let convertDate = (originalDate) => {
     return modifiedDate;
 }
 
-let top12SeveralCategory = () => {
+let categoryListDisplayNone = () => {
     if(document.querySelector('#category-list')!=null) {
         document.querySelector('#category-list').style.display = "none";
     }
     if(document.querySelector('#category2-list')!=null) {
         document.querySelector('#category2-list').style.display = "none";
     }
+}
+
+let top12SeveralCategory = () => {
+    categoryListDisplayNone();
     categoryYoutube();
     categoryNews();
     categoryJob();    

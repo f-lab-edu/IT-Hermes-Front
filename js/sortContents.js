@@ -1,84 +1,60 @@
-let sortContents = () => {
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            let data = JSON.parse(xhr.responseText);
-            let info = document.querySelector('#category-info');
-            info.innerHTML = `
-            <div class="dropdown" id="category-select1">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="category-list" data-bs-toggle="dropdown" aria-expanded="false">
-                --키워드선택--
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li onClick="dropDownListValue('NEWS')"><a class="dropdown-item">뉴스</a></li>
-                    <li onClick="dropDownListValue('YOUTUBE')"><a class="dropdown-item">유투브</a></li>
-                    <li onClick="dropDownListValue('JOB')"><a class="dropdown-item">채용</a></li>
-                </ul>
-            </div>
-            
-            <div class="dropdown" id="category-select2">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="category2-list" data-bs-toggle="dropdown" aria-expanded="false">
-                --키워드선택--
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li onClick="dropDownListValue2('최신순')"><a class="dropdown-item">최신순</a></li>
-                    <li onClick="dropDownListValue2('인기순')"><a class="dropdown-item">인기순</a></li>
-                    <li onClick="dropDownListValue2('서비스 추천순')"><a class="dropdown-item">서비스 추천순</a></li>
-                </ul>
-            </div>
-                `;
+// let sortContents = () => {
+//     let xhr = new XMLHttpRequest();
+//     xhr.onreadystatechange = () => {
+//         if (xhr.readyState == 4 && xhr.status == 200) {
+//             let data = JSON.parse(xhr.responseText);
 
-            let infoContents2 = document.querySelector('#section-info2');
-            infoContents2.innerHTML = ``;
+//             let infoContents2 = document.querySelector('#section-info2');
+//             infoContents2.innerHTML = ``;
     
-            let infoContents3 = document.querySelector('#section-info3');
-            infoContents3.innerHTML = ``;  
+//             let infoContents3 = document.querySelector('#section-info3');
+//             infoContents3.innerHTML = ``;  
 
-            let pageDataList='';                
-            let infoContents = document.querySelector('#section-info');
-            infoContents.innerHTML = '';
-            for (let i = 0; i < data.length; i++) {
-                pageDataList+=`
-                    <div class="col mb-5" id="main-contents" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
-                        <div class="card h-100">
-                            <img class="mainContents-image" id="mainImage" src="${data[i].image}" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="mainContents-title">${data[i].title}</h5>
-                                    <p class="mainContents-service">${data[i].contentProvider}</p>
-                                    <p class="mainContents-category">${data[i].category}</p>
-                                    <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
-                                    <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                
-                `
-            }
+//             let pageDataList='';                
+//             let infoContents = document.querySelector('#section-info');
+//             infoContents.innerHTML = '';
+//             for (let i = 0; i < data.length; i++) {
+//                 pageDataList+=`
+//                     <div class="col mb-5" id="main-contents" onclick="addViewCount('${data[i].url}','${data[i].contentProvider}')">
+//                         <div class="card h-100">
+//                             <img class="mainContents-image" id="mainImage" src="${data[i].image}" alt="..." />
+//                             <div class="card-body p-4">
+//                                 <div class="text-center">
+//                                     <h5 class="mainContents-title">${data[i].title}</h5>
+//                                     <p class="mainContents-service">${data[i].contentProvider}</p>
+//                                     <p class="mainContents-category">${data[i].category}</p>
+//                                     <p class="mainContents-date">${convertDate(data[i].contentsDate)}</p>
+//                                     <p class="mainContents-reviewCnt">조회수 : ${data[i].viewCnt}</p>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>                
+//                 `
+//             }
             
-            infoContents.innerHTML += `
-            <div class="container px-4 px-lg-5 mt-5">
-                <h5 class="fw-bolder"></h5>
-                <div id="entire-contents-box" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${pageDataList}</div>
-            </div>
-            <div class="container" style="position:absolute; left:40%;">
-                    <ul class="pagination" id="page-info"></ul>
-            </div>
-            `
-            buttonPagenation('YOUTUBE',0);
-        }
-        if(xhr.readyState==4 && xhr.status==401) {
-            let failResponse = JSON.parse(xhr.responseText);
-            if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
-                refreshToken(sortContents); 
-            }  
-        }
-    }
-    xhr.open("GET", defaultServerUrl + `/contents/category?type=YOUTUBE&page=0&order=POPULAR`, true);
-    xhr.setRequestHeader("Content-Type", "application/json")
-    xhr.setRequestHeader(accessAuthentification,getCookie(accessAuthentification));
-    xhr.send();
-}
+//             infoContents.innerHTML += `
+//             <div class="container px-4 px-lg-5 mt-5">
+//                 <h5 class="fw-bolder"></h5>
+//                 <div id="entire-contents-box" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${pageDataList}</div>
+//             </div>
+//             <div class="container" style="position:absolute; left:40%;">
+//                     <ul class="pagination" id="page-info"></ul>
+//             </div>
+//             `
+//             buttonPagenation('YOUTUBE',0);
+//         }
+//         if(xhr.readyState==4 && xhr.status==401) {
+//             let failResponse = JSON.parse(xhr.responseText);
+//             if(String(failResponse.msg).includes('EXPIRED_TOKEN')) {
+//                 refreshToken(sortContents); 
+//             }  
+//         }
+//     }
+//     xhr.open("GET", defaultServerUrl + `/contents/category?type=YOUTUBE&page=0&order=POPULAR`, true);
+//     xhr.setRequestHeader("Content-Type", "application/json")
+//     xhr.setRequestHeader(accessAuthentification,getCookie(accessAuthentification));
+//     xhr.send();
+// }
 
 let submit = (m1, m2, m3) => {
     console.log("****");
@@ -221,8 +197,6 @@ let getCategoryEntireCnt = () => {
 
 let dropDownListValue = (e) => {
     pageData=0;
-    let keyword = document.querySelector('#category-list');
-    keyword.innerHTML=e;
     categoryData=e;
     console.log('---------');
     console.log(e);
@@ -233,7 +207,6 @@ let dropDownListValue = (e) => {
 
 let dropDownListValue2 = (e) => {
     pageData=0;
-    let keyword = document.querySelector('#category2-list');
     let tmp;
     if(e=='최신순'){
         tmp='RECENT';
@@ -242,7 +215,6 @@ let dropDownListValue2 = (e) => {
     }else{
         tmp='ID';
     }
-    keyword.innerHTML=e;
     sortData=tmp;
     submit(categoryData,tmp,pageData);
 }

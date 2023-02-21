@@ -2,14 +2,9 @@ let top12Contents = () => {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange=() => {
         if(xhr.readyState == 4 && xhr.status==200) {
+            categoryListDisplayNone();
             document.querySelector('#section-info2').innerHTML='';
             document.querySelector('#section-info3').innerHTML='';
-            if(document.querySelector('#category-list')!=null) {
-                document.querySelector('#category-list').style.display = "none";
-            }
-            if(document.querySelector('#category2-list')!=null) {
-                document.querySelector('#category2-list').style.display = "none";
-            }
             let data = JSON.parse(xhr.responseText);
 
             let top10Section = document.querySelector('#section-info');
