@@ -170,7 +170,7 @@ let getCategoryEntireCnt = () => {
             youtubeCnt = data.youtubeCnt;
             jobCnt = data.jobCnt;
             newsCnt = data.newsCnt;
-
+            
             youtubeLastLine= youtubeCnt/12;
             if(youtubeCnt%12>0) {
                 youtubeLastLine+=1;
@@ -183,7 +183,6 @@ let getCategoryEntireCnt = () => {
             if(newsCnt%12>0) {
                 newsLastLine+=1;
             }
-            
             youtubeLastLine = parseInt(youtubeLastLine);
             jobLastLine = parseInt(jobLastLine);
             newsLastLine = parseInt(newsLastLine);
@@ -230,6 +229,8 @@ let buttonPagenation = (category, pageIndex) => {
     let lastLine;
     let restCnt;
 
+
+
     if(category=='YOUTUBE') {
         entireData=youtubeCnt;
         lastLine = youtubeLastLine;
@@ -243,7 +244,6 @@ let buttonPagenation = (category, pageIndex) => {
         lastLine = newsLastLine;
         restCnt= newsRestCnt;
     }
-
     // 19개
     // 8개씩 분할
     // 1 2 3(17 18 19)
@@ -323,7 +323,7 @@ let buttonPagenation = (category, pageIndex) => {
                     break;
                 }
             }
-            let limitPageLine = Math.floor(jobLastLine);
+            let limitPageLine = Math.floor(lastLine);
 
             startButton=lastButton-7;
             let currentPageLine = checkPagenationCurrentLine(pageIndex+1); // 10넣으면 2호출
