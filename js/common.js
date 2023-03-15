@@ -15,6 +15,7 @@ let jobRestCnt = 0;
 let youtubeLastLine = 0;
 let newsLastLine = 0;
 let jobLastLine = 0;
+let searchCategory = "YOUTUBE";
 
 let viewCntUrl = "";
 let viewCntContentsType = "";
@@ -74,6 +75,20 @@ let isActiveMain = () => {
                 <li onClick="dropDownListValue2('서비스 추천순')"><a class="dropdown-item">서비스 추천순</a></li>
             </ul>
         </div>
+        <select class="form-select" aria-label="Default select example" id="select-category-option" style="width:120px;height:35px" onchange="setCategoryText(this.value)">
+            <option selected value="0">선택</option>
+            <option value="YOUTUBE" onclick="setCategoryText('YOUTUBE')">Youtube</option>
+            <option value="NEWS" onclick="setCategoryText('NEWS')">News</option>
+            <option value="JOB" onclick="setCategoryText('JOB')">Job</option>
+        </select>
+        <div class="input-group" style="width:150px;height:38px;margin-right:10px;margin-left:10px;">
+            <div class="form-outline">
+                <input type="search" id="search-text" class="form-control" />
+            </div>
+        </div>
+        <button type="button" onclick="searchContents()" id="search-btn" class="btn btn-primary" style="width:100px;height:38px;">
+            <i class="fas fa-search"></i> 검색
+        </button>
         `
         categoryYoutube();
         categoryNews();
@@ -211,3 +226,7 @@ let top12SeveralCategory = () => {
     categoryNews();
     categoryJob();    
 }
+
+let setCategoryText = (data) => {
+    searchCategory=data;
+} 

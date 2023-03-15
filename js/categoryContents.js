@@ -192,3 +192,86 @@ let categoryJob = () => {
     xhr.open("GET", defaultServerUrl + `/contents/main?type=JOB`, true);
     xhr.send();
 }
+let searchContents = () => {
+    document.querySelector('#section-info2').innerHTML='';
+    document.querySelector('#section-info3').innerHTML='';
+    let searchText = document.querySelector('#search-text').value;
+    console.log(searchCategory);
+    console.log(searchText);
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let data = JSON.parse(xhr.responseText);
+            let searchDataSize = data.count;
+            let searchList = '';
+            console.log(data);
+
+            for (let i = 0; i < searchDataSize; i++) {
+                let searchData = data.searchContentsList[i];
+                if(searchData.contentsProviderType=='SARAMIN') {
+                    searchList+=`
+                    <div class="col mb-5" id="main-contents" onclick="addViewCount('${searchData.url}','${searchData.contentsProviderType}')">
+                        <div class="card h-100">
+                            <img class="mainContents-image" id="mainImage" src="/image/saramin_default.png" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="mainContents-title">${searchData.title}</h5>
+                                    <p class="mainContents-service">${searchData.contentsProviderType}</p>
+                                    <p class="mainContents-category">${searchData.category}</p>
+                                    <p class="mainContents-date">${convertDate(searchData.contentsDate)}</p>
+                                    <p class="mainContents-reviewCnt">조회수 : ${searchData.viewCnt}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                } else if(searchData.contentsProviderType=='WANTED') {
+                    searchList+=`
+                    <div class="col mb-5" id="main-contents" onclick="addViewCount('${searchData.url}','${searchData.contentsProviderType}')">
+                        <div class="card h-100">
+                            <img class="mainContents-image" id="mainImage" src="/image/wanted_default.png" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="mainContents-title">${searchData.title}</h5>
+                                    <p class="mainContents-service">${searchData.contentsProviderType}</p>
+                                    <p class="mainContents-category">${searchData.category}</p>
+                                    <p class="mainContents-date">${convertDate(searchData.contentsDate)}</p>
+                                    <p class="mainContents-reviewCnt">조회수 : ${searchData.viewCnt}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                    `
+                } else {
+                    searchList+=`
+                    <div class="col mb-5" id="main-contents" onclick="addViewCount('${searchData.url}','${searchData.contentsProviderType}')">
+                    <div class="card h-100">
+                        <img class="youtube-image" id="mainImage" src="${searchData.image}" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                <h5 class="youtube-title">${searchData.title}</h5>
+                                <p class="youtube-service">${searchData.contentsProviderType}</p>
+                                <p class="youtube-category">${searchData.category}</p>
+                                <p class="youtube-date">${convertDate(searchData.contentsDate)}</p>
+                                <p class="reviewCnt">조회수 : ${searchData.viewCnt}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;                  
+                }
+            }
+
+            let info = document.querySelector('#section-info');
+            info.innerHTML = `
+            <div class="container px-4 px-lg-5 mt-5">
+                <h5 class="fw-bolder">검색</h5>
+                <div id="entire-contents-box" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">${searchList}</div>
+            </div>`;
+        }
+    }
+
+    xhr.open("GET", defaultServerUrl + `/contents/search?type=${searchCategory}&search=${searchText}`, true);
+    xhr.setRequestHeader("Content-Type", "application/json")
+    xhr.setRequestHeader(accessAuthentification,getCookie(accessAuthentification));
+    xhr.send();    
+}
