@@ -4,7 +4,7 @@
 
 :paperclip: [IT-Hermes 크롤링서버 레포](https://github.com/f-lab-edu/IT-Hermes-Crawling)  
 :paperclip: [IT-Hermes 배치서버 레포](https://github.com/f-lab-edu/IT-Hermes-Batch)  
-:paperclip: [IT-Hermes 프론트 레포](https://github.com/f-lab-edu/IT-Hermes-Front)    
+:paperclip: [IT-Hermes 애플리케이션 레포](https://github.com/f-lab-edu/IT-Hermes-Server)    
 <br>
 
 ## :thought_balloon: IT 관련 컨텐츠 알림 서비스  
@@ -27,17 +27,7 @@
 
 ## :page_facing_up: 기술 스택  
 
-
-`spring boot 3.0`, `Java 17`  
-`spring security`  
-`Mysql 8.0`,`h2`,`Spring Data JPA`  
-`Jenkins`, `Github action`  
-`Docker`, `Docker hub`  
-`Nodejs, NCP`  
-`Feign Client`  
 `Html`,`CSS`,`Javascript`  
-`RabbitMQ`,`ElasticSearch`   
-`Redis`,`EH Cache`
 
 ## :thought_balloon: 전체 구조    
 ![68A30EE6-7C85-4FD7-B51C-AFB90683363D_1_105_c](https://user-images.githubusercontent.com/70764912/230696042-70781f1d-6f8f-46d4-9e45-86ad4fa57cb5.jpeg)
